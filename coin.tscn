@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://bounceCoin.tres" type="Animation" id=1]
+[ext_resource path="res://Assets/Plataformas/platformerGraphicsDeluxe_Updated/Items/coinGold.png" type="Texture" id=2]
+[ext_resource path="res://coin.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "pickup"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.353553, 0.378929 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.09693
+
+[node name="coin" type="Area2D" groups=[
+"coin",
+]]
+scale = Vector2( 2.36, 2.41482 )
+collision_layer = 4
+script = ExtResource( 3 )
+
+[node name="spr_coin" type="Sprite" parent="."]
+scale = Vector2( 0.317966, -0.318427 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bounce"
+anims/bounce = ExtResource( 1 )
+anims/pickup = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.97322, 1.87489 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_coin_body_entered" flags=6]
+[connection signal="body_entered" from="." to="." method="_on_coinarea_body_entered"]
