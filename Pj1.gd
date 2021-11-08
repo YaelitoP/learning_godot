@@ -18,11 +18,8 @@ func _physics_process(delta):
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		jumping()
-	 
-	if !ataques() and animation_finished():
-		animations()
-	elif animation_finished() and Input.is_action_just_pressed("attaque"):
-		ataques()
+	animations()
+	
 	
 	direction = move_and_slide(direction, Vector2.UP)
 
@@ -69,7 +66,3 @@ func get_input_velocity() -> float:
 
 func get_gravity() -> float:
 	return jumpfall if jumping() else gravity
-
-func animation_finished():
-	emit_signal("ready")
-	pass
