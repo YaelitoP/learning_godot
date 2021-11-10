@@ -12,23 +12,28 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "area_plataforma",
 "language": "GDScript",
-"path": "res://area_plataforma.gd"
+"path": "res://scripts/area_plataforma.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "plataforma",
 "language": "GDScript",
-"path": "res://plataformita.gd"
+"path": "res://scripts/plataformita.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "player1",
+"language": "GDScript",
+"path": "res://scripts/Pj1.gd"
 } ]
 _global_script_class_icons={
 "area_plataforma": "",
-"plataforma": ""
+"plataforma": "",
+"player1": ""
 }
 
 [application]
 
 config/name="test2"
-run/main_scene="res://TestMap.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenas/TestMap.tscn"
 
 [importer_defaults]
 
