@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=34 format=2]
+[gd_resource type="SpriteFrames" load_steps=44 format=2]
 
 [ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-idle-01.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-idle-00.png" type="Texture" id=2]
@@ -33,9 +33,29 @@
 [ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-attack3-02.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png" type="Texture" id=32]
 [ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-hurt-00.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-hurt-02.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-04.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-01.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-06.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-hurt-01.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-05.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-00.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-02.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Characters/adventurer/Adventurer-1.5/Individual Sprites/adventurer-die-03.png" type="Texture" id=43]
 
 [resource]
 animations = [ {
+"frames": [ ExtResource( 34 ), ExtResource( 39 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "dmg",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 37 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 36 ), ExtResource( 40 ), ExtResource( 38 ) ],
+"loop": false,
+"name": "dead",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "atack2",

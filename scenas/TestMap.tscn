@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenas/plataformita.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/animations/mundito.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenas/honguitos.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenas/coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenas/waypoints.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenas/murcielago.tscn" type="PackedScene" id=7]
 
 [node name="world" type="Node2D"]
 
@@ -63,23 +64,8 @@ position = Vector2( 2096.7, 650.482 )
 [node name="coin4" parent="coins" instance=ExtResource( 5 )]
 position = Vector2( 1254.84, 522.673 )
 
-[node name="Pj1" parent="." instance=ExtResource( 3 )]
-process_priority = 1
-position = Vector2( 777.898, 1306.26 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="spr_player" parent="Pj1/player" index="0"]
-frame = 2
-
-[node name="Camera2D" type="Camera2D" parent="Pj1/player" index="2"]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-smoothing_speed = 10.0
-
 [node name="plataforma" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2451.58, 1040.32 )
+position = Vector2( 3216.95, 259.078 )
 collision_layer = 2
 editor_process = false
 waypoints_path = NodePath("../waypoints")
@@ -90,16 +76,42 @@ line_color = Color( 0.941176, 0, 0, 1 )
 triangle_color = Color( 0.721569, 0.909804, 1, 1 )
 
 [node name="Position2D" parent="waypoints" index="0"]
-position = Vector2( 54.1499, 38.125 )
+position = Vector2( 110.797, -346.276 )
 
 [node name="Position2D2" parent="waypoints" index="1"]
-position = Vector2( 2353.97, 38.125 )
+position = Vector2( 810.315, -348.044 )
 
 [node name="Position2D3" parent="waypoints" index="2"]
-position = Vector2( 2358.15, 993.09 )
+position = Vector2( 843.9, 587.097 )
 
 [node name="Position2D4" parent="waypoints" index="3"]
-position = Vector2( 46.1499, 993.09 )
+position = Vector2( 142.615, 595.935 )
 
-[editable path="Pj1"]
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="chobirandom" parent="enemies" instance=ExtResource( 7 )]
+position = Vector2( 1570.29, 842.148 )
+mass = 0.61
+
+[node name="chobirandom2" parent="enemies" instance=ExtResource( 7 )]
+position = Vector2( 3235.42, 1497.94 )
+mass = 0.61
+
+[node name="Pj1" parent="." instance=ExtResource( 3 )]
+process_priority = 1
+position = Vector2( 777.898, 1306.26 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="Pj1/player" index="0"]
+position = Vector2( -1.54559, -0.618225 )
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="spr_player" parent="Pj1/player" index="1"]
+frame = 1
+
 [editable path="waypoints"]
+[editable path="Pj1"]

@@ -1,126 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/animations/gladiador.tres" type="SpriteFrames" id=1]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends KinematicBody2D
-
-export var maxspeed: = 400.0
-export var minspeed: = 100.0
-export var jumpheight: = 150.0
-export var jumptime: = 0.5
-export var fallspeed: = 0.4
-
-onready var jumpforce : float = ((2.0 * jumpheight) / jumptime) * -1.0
-onready var jumpfall : float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1.0
-onready var gravity : float = ((-2.0 * jumpheight) / (fallspeed * fallspeed)) * -1.0
-
-var direction: = Vector2.ZERO
-var acceleration: = 0.5
-var isAttacking: = false
-var atackCombo: = 0
-func _physics_process(delta):
-	direction.x = get_input_velocity()
-	direction.y += get_gravity() * delta
-	
-	animations()
-	
-	if is_on_floor() and Input.is_action_just_pressed(\"jump\"):
-		jumping()
-	
-	for index in get_slide_count():
-		var collision: = get_slide_collision(index)
-		bouncers(collision)
-	
-	direction = move_and_slide(direction, Vector2.UP)
-	var collide: = move_and_collide(direction * delta)
-	
-
-func animations():
-	if !isAttacking:
-		if direction.x != 0 and is_on_floor():
-			if direction.x > 0:
-				$anim_player.play(\"run\")
-			elif direction.x < 0:
-				$anim_player.play(\"runL\")
-		elif direction.y < 0:
-			$spr_player.play(\"jump\")
-		elif direction.y > 0 and !is_on_floor():
-			$spr_player.play(\"fall\")
-		else:
-			$anim_player.play(\"idle\")
-	if Input.is_action_just_pressed(\"attaque\"):
-		ataques()
-		isAttacking = true
-
-func ataques():
-	if atackCombo == 0 and Input.is_action_just_pressed(\"attaque\"):
-		$anim_player.play(\"atack0\")
-	if atackCombo == 1 and Input.is_action_just_pressed(\"attaque\"):
-		$anim_player.play(\"atack1\")
-	if atackCombo == 2 and Input.is_action_just_pressed(\"attaque\"):
-		$anim_player.play(\"atack2\")
-
-func jumping():
-	direction.y += jumpforce
-	return(direction.y)
-
-func get_input_velocity() -> float:
-	
-	if Input.is_action_pressed(\"moveR\"):
-		acceleration = 0.2
-		if direction.x < maxspeed:
-			direction.x += lerp(minspeed, maxspeed, acceleration)
-		else:
-			direction.x = maxspeed
-		
-	elif Input.is_action_pressed(\"moveL\"):
-		acceleration = 0.2
-		if direction.x > -maxspeed:
-			direction.x += -lerp(minspeed, maxspeed, acceleration)
-		else:
-			direction.x = -maxspeed
-		
-	else:
-		acceleration = 0.5
-		while direction.x != 0:
-			direction.x -= lerp(direction.x, 0, acceleration)
-	return (direction.x)
-
-func get_gravity() -> float:
-	return jumpfall if jumping() else gravity
-
-func bouncers(collision):
-	if collision.collider.is_in_group(\"bouncers\"):
-		direction.y = jumpforce + jumpforce/2
-	elif collision.collider.is_in_group(\"bouncers\") and Input.is_action_pressed(\"jump\"):
-		direction.y = jumpforce + jumpforce
-	return(direction.y)
-
-func _on_anim_player_animation_finished(anim_name: String) -> void:
-	if anim_name == \"atack0\":
-		$Timer.start()
-		atackCombo = 1
-		isAttacking = false
-	elif anim_name == \"atack1\":
-		$Timer.start()
-		atackCombo = 2
-		isAttacking = false
-	elif anim_name == \"atack2\":
-		atackCombo = 0
-		isAttacking = false
-
-
-func _on_Timer_timeout() -> void:
-	atackCombo = 0
-"
+[ext_resource path="res://scripts/Pj1.tres.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 16.4853
 height = 43.5481
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 18.6894
+radius = 20.0579
 height = 41.9387
 
 [sub_resource type="Animation" id=4]
@@ -133,10 +21,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("spr_player:animation")
@@ -169,7 +57,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -209,10 +97,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("area_sword/coll_atack1:visible")
@@ -221,7 +109,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -261,7 +149,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -273,7 +161,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -459,20 +347,21 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="Player1" type="Node2D"]
+[node name="playerNode" type="Node2D"]
 position = Vector2( 130.759, 91.1909 )
 
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 1.54561, 0.618248 )
 collision_mask = 126
-script = SubResource( 1 )
+script = ExtResource( 2 )
 
 [node name="spr_player" type="AnimatedSprite" parent="player"]
-position = Vector2( -4.12375, -19.1745 )
+position = Vector2( -8.26688, -19.0019 )
 scale = Vector2( 2.34114, 2.6242 )
 frames = ExtResource( 1 )
-animation = "atack2"
-frame = 5
+animation = "dmg"
+frame = 2
+playing = true
 flip_h = true
 
 [node name="coll_player" type="CollisionShape2D" parent="player"]
@@ -482,10 +371,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="area_coll" type="Area2D" parent="player/coll_player"]
+[node name="area_coll" type="Area2D" parent="player/coll_player" groups=[
+"player",
+]]
 collision_mask = 30
 
-[node name="coll_area" type="CollisionShape2D" parent="player/coll_player/area_coll"]
+[node name="coll_area" type="CollisionShape2D" parent="player/coll_player/area_coll" groups=[
+"player",
+]]
 position = Vector2( 0.220749, -0.483814 )
 shape = SubResource( 3 )
 
@@ -498,27 +391,32 @@ collision_mask = 58
 [node name="area_sword" type="Area2D" parent="player" groups=[
 "ataques",
 ]]
+visible = false
 position = Vector2( -46.8477, -24.8903 )
 scale = Vector2( -1, 1 )
 collision_mask = 8
 
-[node name="coll_atack0" type="CollisionPolygon2D" parent="player/area_sword"]
-visible = false
+[node name="coll_atack0" type="CollisionPolygon2D" parent="player/area_sword" groups=[
+"ataques",
+]]
 position = Vector2( -0.516586, 0.265785 )
 polygon = PoolVector2Array( -30.4714, -40.5258, -8.67664, -38.9311, 8.99838, -20.9902, 13.9687, -3.02282, 8.86548, 21.8019, -8.14507, 38.4138, -24.0924, 41.4703, -32.9964, 38.8124, -26.6971, 33.7891, -14.3379, 18.7719, -11.8129, 3.35614, -14.0721, -11.1294, -19.7069, -19.5284, -28.3451, -27.3692, -45.4885, -33.2166 )
 disabled = true
 
-[node name="coll_atack1" type="CollisionPolygon2D" parent="player/area_sword"]
-visible = false
+[node name="coll_atack1" type="CollisionPolygon2D" parent="player/area_sword" groups=[
+"ataques",
+]]
 position = Vector2( -45.3021, 24.272 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -28.9558, -45.7137, -37.2421, -42.779, -50.8799, -27.4149, -54.1598, -9.97925, -51.0525, 5.21222, -36.2063, 21.9574, -23.7769, 27.4815, -2.54337, 27.8268, 14.0291, 24.8921, 28.7027, 21.9574, 19.0354, 9.52798, 6.95129, 11.5995, -9.96648, 11.7722, -24.1222, 11.0816, -32.0632, -1.1751, -36.2063, -12.2234, -34.48, -26.897, -29.819, -36.2191, -14.6275, -46.5769 )
 disabled = true
 
-[node name="coll_atack2" type="CollisionPolygon2D" parent="player/area_sword"]
-visible = false
+[node name="coll_atack2" type="CollisionPolygon2D" parent="player/area_sword" groups=[
+"ataques",
+]]
 polygon = PoolVector2Array( -53.3238, -7.07883, -37.0965, -2.24518, -21.7324, 1.0348, -13.1009, 4.31477, 3.64424, 11.9105, 15.901, 18.2978, 15.2105, 28.483, 7.44211, 36.2514, -4.64201, 40.9124, -22.7682, 46.9545, -49.5259, 47.8176, -72.4857, 47.2997, -79.0457, 41.7756, -91.3024, 38.8408, -96.654, 36.5966, -93.374, 32.2809, -81.6351, 27.7925, -74.0394, 28.8283, -64.89, 34.8703, -52.6332, 36.5966, -28.9829, 37.6324, -23.4587, 36.2514, -15.6904, 30.0367, -4.64201, 26.5841, -1.87993, 17.4347, -9.1304, 12.2558, -14.1367, 9.32105, -22.9408, 7.94001, -30.7092, 1.89795, -39.686, -0.000984192, -46.4185, -2.07255 )
+disabled = true
 
 [node name="anim_player" type="AnimationPlayer" parent="player"]
 autoplay = "idle"
@@ -533,4 +431,5 @@ anims/runL = SubResource( 7 )
 autostart = true
 
 [connection signal="animation_finished" from="player/anim_player" to="player" method="_on_anim_player_animation_finished"]
+[connection signal="animation_started" from="player/anim_player" to="player" method="_on_anim_player_animation_started"]
 [connection signal="timeout" from="player/Timer" to="player" method="_on_Timer_timeout"]

@@ -1,5 +1,6 @@
 extends KinematicBody2D
 class_name player1
+
 export var maxspeed: = 400.0
 export var minspeed: = 100.0
 export var jumpheight: = 150.0
@@ -87,9 +88,10 @@ func get_gravity() -> float:
 
 func bouncers(collision):
 	if collision.collider.is_in_group("bouncers"):
-		direction.y = jumpforce + jumpforce/2
-	elif collision.collider.is_in_group("bouncers") and Input.is_action_pressed("jump"):
-		direction.y = jumpforce + jumpforce
+		if Input.is_action_pressed("jump"):
+			direction.y = jumpforce + jumpforce
+		else:
+			direction.y = jumpforce + jumpforce/2
 	return(direction.y)
 
 func _on_anim_player_animation_finished(anim_name: String) -> void:
@@ -105,5 +107,15 @@ func _on_anim_player_animation_finished(anim_name: String) -> void:
 		atackCombo = 0
 		isAttacking = false
 
+
 func _on_Timer_timeout() -> void:
 	atackCombo = 0
+
+
+func _on_anim_player_animation_started(anim_name: String) -> void:
+	if anim_name == "atack0":
+		isAttacking = true
+	elif anim_name == "atack1":
+		isAttacking = true
+	elif anim_name == "atack2":
+		isAttacking = true

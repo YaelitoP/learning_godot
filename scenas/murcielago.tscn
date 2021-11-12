@@ -1,7 +1,27 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/enemies/Bat_Sprite_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/murcielago.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -43,82 +63,130 @@ region = Rect2( 48, 24, 16, 24 )
 atlas = ExtResource( 1 )
 region = Rect2( 64, 24, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 24 )
-
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "angry",
+"speed": 8.0
+}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "dead",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "idle",
 "speed": 8.0
-}, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "attack",
-"speed": 8.0
 } ]
 
 [sub_resource type="CircleShape2D" id=17]
-radius = 6.08995
+radius = 62.1099
 
 [sub_resource type="CircleShape2D" id=18]
-radius = 6.3351
+radius = 62.314
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 69.1854
+radius = 175.527
+
+[sub_resource type="Animation" id=20]
+resource_name = "ataque"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "_on_area_agro_area_entered"
+} ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_chobi:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_chobi:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
 
 [node name="chobirandom" type="RigidBody2D" groups=[
 "enemy",
 ]]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="spr_chobi" type="AnimatedSprite" parent="."]
+position = Vector2( -8, 16 )
+scale = Vector2( 8, 8.00731 )
 frames = SubResource( 16 )
-animation = "idle"
-frame = 3
-playing = true
+animation = "angry"
 
 [node name="coll_chobi" type="CollisionShape2D" parent="."]
-position = Vector2( -0.293949, -4.80103 )
+position = Vector2( -7.59349, -23.4879 )
 shape = SubResource( 17 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="area_chobi" type="Area2D" parent="coll_chobi"]
+collision_layer = 8
+collision_mask = 3
 
 [node name="coll_area" type="CollisionShape2D" parent="coll_chobi/area_chobi"]
 position = Vector2( -0.0979805, 0.0979805 )
 shape = SubResource( 18 )
 
+[node name="coll_ray" type="RayCast2D" parent="coll_chobi"]
+modulate = Color( 0.262745, 0.843137, 0.054902, 1 )
+position = Vector2( 7.59349, 23.4879 )
+scale = Vector2( -1.62751, 1.06764 )
+collision_mask = 11
+
 [node name="area_agro" type="Area2D" parent="."]
-position = Vector2( -0.271473, -4.88655 )
+position = Vector2( -7.43818, -23.5249 )
+collision_layer = 8
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="coll_agro" type="CollisionShape2D" parent="area_agro"]
-position = Vector2( 0, -0.0452461 )
+position = Vector2( -0.0872116, 0.169239 )
 shape = SubResource( 19 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.145
+
+[node name="anim_chobi" type="AnimationPlayer" parent="."]
+anims/ataque = SubResource( 20 )
+anims/dead = SubResource( 21 )
+
 [connection signal="area_entered" from="coll_chobi/area_chobi" to="." method="_on_area_chobi_area_entered"]
+[connection signal="area_entered" from="area_agro" to="." method="_on_area_agro_area_entered"]
+[connection signal="animation_finished" from="anim_chobi" to="." method="_on_anim_chobi_animation_finished"]

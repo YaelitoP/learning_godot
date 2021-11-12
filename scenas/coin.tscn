@@ -57,5 +57,6 @@ anims/pickup = SubResource( 1 )
 scale = Vector2( 1.97322, 1.87489 )
 shape = SubResource( 2 )
 
+[connection signal="area_entered" from="." to="." method="_on_coin_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_coin_body_entered" flags=6]
 [connection signal="body_entered" from="." to="." method="_on_coinarea_body_entered"]
