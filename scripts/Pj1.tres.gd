@@ -1,9 +1,9 @@
 extends KinematicBody2D
 class_name player1
 
-export var maxspeed: = 500.0
-export var minspeed: = 150.0
-export var jumpheight: = 150.0
+export var maxspeed: = 700.0
+export var minspeed: = 350.0
+export var jumpheight: = 200.0
 export var acceleration: = 0.5
 
 onready var jumpforce : float = ((2.0 * jumpheight) / jumptime) * -1.0

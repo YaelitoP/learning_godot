@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/enemies/Bat_Sprite_Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/animations/murcielago.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/murcielago.gd" type="Script" id=2]
+[ext_resource path="res://Assets/animations/Bat/scenasmurido.tres" type="Animation" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 62.1099
@@ -11,126 +12,6 @@ radius = 62.314
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 550.852
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 48, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 48, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 48, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 48, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 48, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 24, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 24, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 24, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 24, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 24, 16, 24 )
-
-[sub_resource type="SpriteFrames" id=19]
-animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": false,
-"name": "dead",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "angry",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "idle",
-"speed": 8.0
-} ]
-
-[sub_resource type="Animation" id=20]
-resource_name = "murido"
-length = 0.6
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("spr_chobi:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("spr_chobi:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "dead" ]
-}
 
 [node name="murcielago" type="KinematicBody2D" groups=[
 "enemy",
@@ -187,15 +68,15 @@ shape = SubResource( 3 )
 [node name="spr_chobi" type="AnimatedSprite" parent="."]
 position = Vector2( -1.64618, 40.1446 )
 scale = Vector2( 8, 8 )
-frames = SubResource( 19 )
+frames = ExtResource( 1 )
 animation = "dead"
-frame = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.145
+one_shot = true
 
 [node name="anim_chobi" type="AnimationPlayer" parent="."]
-anims/murido = SubResource( 20 )
+anims/murido = ExtResource( 3 )
 
 [connection signal="area_entered" from="coll_chobi/hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="area_agro" to="." method="_on_area_agro_area_entered"]

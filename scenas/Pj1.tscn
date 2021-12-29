@@ -168,6 +168,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "idle"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("coll_player:position")
@@ -353,6 +354,7 @@ script = ExtResource( 2 )
 [node name="spr_player" type="AnimatedSprite" parent="."]
 position = Vector2( -8.26688, -19.0019 )
 scale = Vector2( 2.34114, 2.6242 )
+z_index = 1
 frames = ExtResource( 1 )
 animation = "idle"
 frame = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenas/plataformita.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/animations/mundito.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenas/coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenas/waypoints.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenas/murcielago.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenas/bat.tscn" type="PackedScene" id=8]
 
 [node name="Map1" type="Node2D"]
 position = Vector2( 0, 1.90503 )
@@ -104,21 +105,27 @@ __meta__ = {
 }
 
 [node name="plataforma" parent="transport" instance=ExtResource( 1 )]
-position = Vector2( 3148.83, 388.46 )
+position = Vector2( 3949.7, -546.641 )
 collision_layer = 2
 waypoints_path = NodePath("../../waypoints")
 
 [node name="chobirandom" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2728.8, 149.998 )
+position = Vector2( 2727.89, 149.998 )
 
 [node name="Pj1" parent="." instance=ExtResource( 3 )]
 process_priority = 1
 position = Vector2( 2110.88, 577.086 )
 scale = Vector2( 2, 2 )
 
+[node name="spr_player" parent="Pj1" index="0"]
+frame = 3
+
 [node name="Camera2D" type="Camera2D" parent="Pj1"]
 current = true
 zoom = Vector2( 2, 2 )
+
+[node name="bat" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1941.95, 163.273 )
 
 [editable path="waypoints"]
 [editable path="Pj1"]

@@ -4,7 +4,6 @@ class_name murcielago
 onready var ray: = $area_agro/coll_ray
 onready var ray1: = $area_agro/coll_ray1
 onready var ray2: = $area_agro/coll_ray2
-onready var parent: = get_parent()
 
 var hp: = 100
 var max_hp: = 150
@@ -13,7 +12,7 @@ var sight: = 300.0
 
 var wrong_dire: = Vector2.ZERO
 var intruder: Vector2
-var direction: = Vector2.ZERO
+var motion: = Vector2.ZERO
 
 var target: float
 var alert: = false
@@ -36,21 +35,19 @@ func _physics_process(_delta: float) -> void:
 	elif !dead:
 		$spr_chobi.play("idle")
 	
-	idle_movement(direction)
+	idle_movement()
 
-
-
-func idle_movement(motion):
+func idle_movement():
 	
 	if wrong_dire != Vector2.ZERO and !agro:
 		motion = wrong_dire
 		motion = move_and_slide(motion, Vector2.UP)
 		
 	elif wrong_dire != Vector2.ZERO and agro:
-		motion = wrong_dire - 2
+		motion = wrong_dire
 		motion = move_and_slide(motion, Vector2.UP)
 		
-	elif agro:
+	elif alert:
 		motion = move_and_slide(motion, Vector2.UP)
 		
 	else:
@@ -96,21 +93,21 @@ func check_cast_to(bodies):
 	if ray.is_colliding():
 		if collision_object.is_in_group("player"):
 			wrong_dire = Vector2.ZERO
-			direction = direction_to_player * speed
+			motion = direction_to_player * speed
 		elif collision_object.is_in_group("plataformas"):
 			see_path(collision_object)
 	
 	if ray1.is_colliding():
 		if collision_object1.is_in_group("player"):
 			wrong_dire = Vector2.ZERO
-			direction = direction_to_player * speed
+			motion = direction_to_player * speed
 		elif collision_object1.is_in_group("plataformas"):
 			see_path(collision_object1)
 	
 	if ray2.is_colliding():
 		if collision_object2.is_in_group("player"):
 			wrong_dire = Vector2.ZERO
-			direction = direction_to_player * speed
+			motion = direction_to_player * speed
 		elif collision_object2.is_in_group("plataformas"):
 			see_path(collision_object2)
 
