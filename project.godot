@@ -9,20 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Node2D",
 "class": "Idle_Bat",
 "language": "GDScript",
-"path": "res://scripts/IDLE_bat.gd"
+"path": "res://scripts/idle_bat.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://scripts/StateMachine.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Wander_Bat",
 "language": "GDScript",
-"path": "res://scripts/WANDER_bat.gd"
+"path": "res://scripts/wander_bat.gd"
 }, {
 "base": "Area2D",
 "class": "area_plataforma",

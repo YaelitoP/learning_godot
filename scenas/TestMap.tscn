@@ -105,7 +105,7 @@ __meta__ = {
 }
 
 [node name="plataforma" parent="transport" instance=ExtResource( 1 )]
-position = Vector2( 3949.7, -546.641 )
+position = Vector2( 3951.41, -373.316 )
 collision_layer = 2
 waypoints_path = NodePath("../../waypoints")
 
@@ -114,7 +114,7 @@ position = Vector2( 2727.89, 149.998 )
 
 [node name="Pj1" parent="." instance=ExtResource( 3 )]
 process_priority = 1
-position = Vector2( 2110.88, 577.086 )
+position = Vector2( 1304.43, 164.316 )
 scale = Vector2( 2, 2 )
 
 [node name="spr_player" parent="Pj1" index="0"]
@@ -122,10 +122,10 @@ frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="Pj1"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 3, 3 )
 
 [node name="bat" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1941.95, 163.273 )
+position = Vector2( 1136.23, -395.24 )
 
 [editable path="waypoints"]
 [editable path="Pj1"]

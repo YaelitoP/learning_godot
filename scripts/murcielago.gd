@@ -54,7 +54,7 @@ func idle_movement():
 		motion = move_and_slide(motion, Vector2.UP)
 	
 	for index in get_slide_count():
-		var collision: = get_slide_collision(index)
+		var _collision: = get_slide_collision(index)
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
