@@ -1,18 +1,17 @@
-extends Node2D
-class_name Idle_Bat
+extends StateMachine
 
-onready var machine: StateMachine
-onready var parent: = get_parent()
-
-func _physics_process(_delta: float) -> void:
-	pass
+var gritar: = true
+func _ready():
 	
-func enter():
-	print("your on idle")
-	yield(get_tree().create_timer(2.0), "timeout")
-	#parent.random_state(parent.history)
-	exit("wander")
+	add_state("idle")
 
-func exit(next_state):
-	parent.change_to(next_state)
-
+func _physics_process(delta: float):
+	match state:
+		states.idle:
+			if gritar:
+				print("idle")
+				gritar = false
+			if owner.timer.get_time_left() == 0:
+				print("cambio a wander")
+				gritar = true
+				change_state(states.wander)

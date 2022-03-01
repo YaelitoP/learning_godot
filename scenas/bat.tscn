@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/bat.gd" type="Script" id=1]
 [ext_resource path="res://Assets/animations/murcielago.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://scripts/wander_bat.gd" type="Script" id=3]
-[ext_resource path="res://scripts/idle_bat.gd" type="Script" id=4]
-[ext_resource path="res://scripts/StateMachine.gd" type="Script" id=5]
+[ext_resource path="res://scripts/batMachine.gd" type="Script" id=3]
 [ext_resource path="res://Assets/animations/Bat/scenasmurido.tres" type="Animation" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -18,29 +16,17 @@ position = Vector2( 3.66284, 34.1863 )
 scale = Vector2( 8, 8 )
 z_index = 1
 frames = ExtResource( 2 )
-animation = "idle"
-frame = 1
-playing = true
+animation = "dead"
 
 [node name="coll_bat" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="anim_bat" type="AnimationPlayer" parent="."]
 anims/murido = ExtResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 0.512512 )
-current = true
-zoom = Vector2( 3, 3 )
-
-[node name="stateMachine" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="idle" type="Node2D" parent="stateMachine"]
-script = ExtResource( 4 )
-
-[node name="wander" type="Node2D" parent="stateMachine"]
+[node name="batMachine" type="Node2D" parent="."]
 script = ExtResource( 3 )
+speed = 150
+
+[node name="timer" type="Timer" parent="batMachine"]
+one_shot = true
