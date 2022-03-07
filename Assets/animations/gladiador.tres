@@ -66,25 +66,25 @@ animations = [ {
 "name": "atack0",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "atack1",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "jump",
-"speed": 7.0
+"name": "run",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "jump",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,

@@ -218,7 +218,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ "run" ]
 }
 tracks/2/type = "value"
@@ -230,7 +230,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/3/type = "value"
@@ -293,7 +293,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ "run" ]
 }
 tracks/2/type = "value"
@@ -305,7 +305,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/3/type = "value"
@@ -345,9 +345,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="player" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 126
 script = ExtResource( 2 )
 
@@ -360,23 +358,17 @@ animation = "idle"
 frame = 1
 playing = true
 
-[node name="coll_player" type="CollisionShape2D" parent="." groups=[
-"player",
-]]
+[node name="coll_player" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2( -7.67828, -10.3732 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="area_coll" type="Area2D" parent="coll_player" groups=[
-"player",
-]]
+[node name="area_coll" type="Area2D" parent="coll_player" groups=["player"]]
 collision_mask = 30
 
-[node name="coll_area" type="CollisionShape2D" parent="coll_player/area_coll" groups=[
-"player",
-]]
+[node name="coll_area" type="CollisionShape2D" parent="coll_player/area_coll" groups=["player"]]
 position = Vector2( 0.220749, -0.483814 )
 shape = SubResource( 2 )
 
@@ -389,23 +381,17 @@ enabled = true
 collision_mask = 994
 collide_with_areas = true
 
-[node name="area_sword" type="Area2D" parent="." groups=[
-"ataques",
-]]
+[node name="area_sword" type="Area2D" parent="." groups=["ataques"]]
 position = Vector2( 38.848, -24.89 )
 collision_mask = 8
 
-[node name="coll_atack0" type="CollisionPolygon2D" parent="area_sword" groups=[
-"ataques",
-]]
+[node name="coll_atack0" type="CollisionPolygon2D" parent="area_sword" groups=["ataques"]]
 visible = false
 position = Vector2( -0.516586, 0.265785 )
 polygon = PoolVector2Array( -30.4714, -40.5258, -8.67664, -38.9311, 8.99838, -20.9902, 13.9687, -3.02282, 8.86548, 21.8019, -8.14507, 38.4138, -24.0924, 41.4703, -32.9964, 38.8124, -26.6971, 33.7891, -14.3379, 18.7719, -11.8129, 3.35614, -14.0721, -11.1294, -19.7069, -19.5284, -28.3451, -27.3692, -45.4885, -33.2166 )
 disabled = true
 
-[node name="coll_atack1" type="CollisionPolygon2D" parent="area_sword" groups=[
-"ataques",
-]]
+[node name="coll_atack1" type="CollisionPolygon2D" parent="area_sword" groups=["ataques"]]
 visible = false
 position = Vector2( -45.3021, 24.272 )
 rotation = 3.14159
@@ -413,9 +399,7 @@ scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -28.9558, -45.7137, -37.2421, -42.779, -50.8799, -27.4149, -54.1598, -9.97925, -51.0525, 5.21222, -36.2063, 21.9574, -23.7769, 27.4815, -2.54337, 27.8268, 14.0291, 24.8921, 28.7027, 21.9574, 19.0354, 9.52798, 6.95129, 11.5995, -9.96648, 11.7722, -24.1222, 11.0816, -32.0632, -1.1751, -36.2063, -12.2234, -34.48, -26.897, -29.819, -36.2191, -14.6275, -46.5769 )
 disabled = true
 
-[node name="coll_atack2" type="CollisionPolygon2D" parent="area_sword" groups=[
-"ataques",
-]]
+[node name="coll_atack2" type="CollisionPolygon2D" parent="area_sword" groups=["ataques"]]
 visible = false
 polygon = PoolVector2Array( -53.3238, -7.07883, -37.0965, -2.24518, -21.7324, 1.0348, -13.1009, 4.31477, 3.64424, 11.9105, 15.901, 18.2978, 15.2105, 28.483, 7.44211, 36.2514, -4.64201, 40.9124, -22.7682, 46.9545, -49.5259, 47.8176, -72.4857, 47.2997, -79.0457, 41.7756, -91.3024, 38.8408, -96.654, 36.5966, -93.374, 32.2809, -81.6351, 27.7925, -74.0394, 28.8283, -64.89, 34.8703, -52.6332, 36.5966, -28.9829, 37.6324, -23.4587, 36.2514, -15.6904, 30.0367, -4.64201, 26.5841, -1.87993, 17.4347, -9.1304, 12.2558, -14.1367, 9.32105, -22.9408, 7.94001, -30.7092, 1.89795, -39.686, -0.000984192, -46.4185, -2.07255 )
 disabled = true
