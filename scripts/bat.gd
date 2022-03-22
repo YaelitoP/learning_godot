@@ -15,16 +15,19 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	if machine.motion.x < 0:
+		sprite.set_flip_h(true)
+	else:
+		sprite.set_flip_h(false)
+	
+	
 	match machine.state:
 		
 		machine.states.idle:
-			move_and_slide(Vector2.ZERO, Vector2.UP)
+			move_and_slide(machine.motion, Vector2.UP)
 			
 		machine.states.wander:
-			if machine.motion.x < 0:
-					sprite.set_flip_h(true)
-			else:
-				sprite.set_flip_h(false)
 			move_and_slide(machine.motion, Vector2.UP)
 			
 		machine.states.chase:

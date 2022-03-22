@@ -14,7 +14,7 @@ var next_state: Array
 var target_pos: = Vector2.ZERO
 var direction: = Vector2.ZERO
 var motion: = Vector2.ZERO
-
+var friction: = 0.008
 var shout: = true
 
 func _ready():
@@ -34,11 +34,16 @@ func _physics_process(delta: float):
 	match state:
 		
 		states.idle:
-			get_direction()
 			if shout:
 				print("idle")
 				shout = false
+			if previous_state == states.idle:
+				motion = Vector2.ZERO
+			else:
+				motion = lerp(motion, Vector2.ZERO, friction)
+		
 			if timer.time_left == 0:
+				get_direction()
 				next_state.shuffle()
 				change_state(next_state.front())
 				
@@ -47,6 +52,7 @@ func _physics_process(delta: float):
 				print("wander")
 				shout = false
 			if timer.time_left == 0:
+				get_direction()
 				next_state.shuffle()
 				change_state(next_state.front())
 				
@@ -80,6 +86,7 @@ func chase_player(delta):
 
 func _on_area_bat_body_entered(body: Node) -> void:
 		shout = true
+		timer.stop()
 		objective = body
 		change_state(states.chase)
 

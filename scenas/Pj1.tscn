@@ -355,7 +355,6 @@ scale = Vector2( 2.34114, 2.6242 )
 z_index = 1
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="coll_player" type="CollisionShape2D" parent="." groups=["player"]]

@@ -84,7 +84,7 @@ func check_cast_to(bodies):
 	var direction_to_player = .get_global_position().direction_to(bodies.get_global_position())
 	var cast_direction = direction_to_player * sight
 	var collision_object = ray.get_collider()
-	var collision_object1 = ray1.get_collider() 
+	var collision_object1 = ray1.get_collider()
 	var collision_object2 = ray2.get_collider()
 	ray.set_cast_to(cast_direction)
 	ray1.set_cast_to(cast_direction)
@@ -113,7 +113,7 @@ func check_cast_to(bodies):
 
 func _on_Timer_timeout() -> void:
 	if alert:
-		alert = false 
+		alert = false
 	if agro:
 		agro = false
 	

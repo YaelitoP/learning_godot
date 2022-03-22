@@ -37,7 +37,7 @@ tile_data = PoolIntArray( 65612, 7, 0, 65613, 8, 0, 131148, 13, 0, 196684, 13, 0
 position = Vector2( -312.423, -706.762 )
 
 [node name="honguitos" parent="world/bouncers" instance=ExtResource( 4 )]
-position = Vector2( 1873.57, 993.008 )
+position = Vector2( 1875.47, 993.008 )
 
 [node name="honguitos2" parent="world/bouncers" instance=ExtResource( 4 )]
 position = Vector2( 6439.87, 1444.45 )
@@ -103,12 +103,11 @@ __meta__ = {
 }
 
 [node name="plataforma" parent="transport" instance=ExtResource( 1 )]
-position = Vector2( 3785.54, 388.491 )
-collision_layer = 2
+position = Vector2( 3245.87, -545.093 )
 waypoints_path = NodePath("../../waypoints")
 
 [node name="chobirandom" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3799.8, -1178.94 )
+position = Vector2( 4647.05, 515.553 )
 
 [node name="Pj1" parent="." instance=ExtResource( 3 )]
 process_priority = 1
@@ -120,10 +119,10 @@ frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="Pj1"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 3, 3 )
 
 [node name="bat" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2751.12, 804.897 )
+position = Vector2( 3189.02, 793.474 )
 
 [editable path="waypoints"]
 [editable path="Pj1"]

@@ -2,34 +2,24 @@
 
 [ext_resource path="res://Assets/Plataformas/Six_Grounds_By_CubicTreeGraphics/Objects/Fantasy_Mushroom_1.png" type="Texture" id=1]
 
-[node name="honguito" type="Node2D" groups=[
-"bouncers",
-]]
+[node name="honguito" type="Node2D" groups=["bouncers"]]
 
-[node name="spr_honguito" type="Sprite" parent="." groups=[
-"bouncers",
-]]
+[node name="spr_honguito" type="Sprite" parent="." groups=["bouncers"]]
 position = Vector2( 0.559738, 5.04834 )
 texture = ExtResource( 1 )
 
-[node name="area_honguito" type="Area2D" parent="." groups=[
-"bouncers",
-]]
+[node name="area_honguito" type="Area2D" parent="." groups=["bouncers"]]
 collision_layer = 32
-collision_mask = 27
+collision_mask = 19
 
-[node name="body_honguito" type="StaticBody2D" parent="area_honguito" groups=[
-"bouncers",
-]]
+[node name="body_honguito" type="StaticBody2D" parent="area_honguito" groups=["bouncers"]]
+collision_layer = 32
+collision_mask = 19
 
-[node name="coll_body" type="CollisionPolygon2D" parent="area_honguito/body_honguito" groups=[
-"bouncers",
-]]
+[node name="coll_body" type="CollisionPolygon2D" parent="area_honguito/body_honguito" groups=["bouncers"]]
 position = Vector2( -9.74265, -7.86871 )
 polygon = PoolVector2Array( -36.7395, 10.0346, -12.0939, 6.54939, 8.81747, 3.811, 35.4546, 5.05572, 46.1592, 9.03884, 58.0325, 17.6878, 68.6296, 10.5168, 66.558, -1.19577, 63.4502, -11.6988, 46.1592, -32.784, 27.2394, -43.9865, 9.81323, -44.9823, -8.4185, -44.7793, -32.003, -30.549, -49.1336, -7.92059, -52.1741, 9.28779 )
 
-[node name="coll_area" type="CollisionPolygon2D" parent="area_honguito" groups=[
-"bouncers",
-]]
+[node name="coll_area" type="CollisionPolygon2D" parent="area_honguito" groups=["bouncers"]]
 position = Vector2( -8.24895, -7.61977 )
 polygon = PoolVector2Array( -24.7902, -0.421075, 6.328, -2.91053, 35.9525, -2.66158, 67.0706, 3.81099, 63.0875, -12.3704, 42.1767, -35.6961, 24.501, -45.4802, -8.60872, -45.2312, -26.2838, -34.5266, -41.2205, -20.3367, -52.4435, 4.74983 )
