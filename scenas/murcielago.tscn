@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/animations/murcielago.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/murcielago.gd" type="Script" id=2]
+[ext_resource path="res://Assets/animations/Bat/scenasmurido.tres" type="Animation" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 62.1099
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 62.314
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 550.852
+
+[node name="murcielago" type="KinematicBody2D" groups=[
+"enemy",
+]]
+position = Vector2( -8.89539, 2.5415 )
+collision_layer = 8
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="coll_chobi" type="CollisionShape2D" parent="."]
+position = Vector2( -1.23967, 0.656693 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="coll_chobi"]
+collision_layer = 8
+collision_mask = 3
+
+[node name="coll_area" type="CollisionShape2D" parent="coll_chobi/hitbox"]
+position = Vector2( -0.0979805, 0.0979805 )
+shape = SubResource( 2 )
+
+[node name="area_agro" type="Area2D" parent="."]
+position = Vector2( -1.08436, 1.129 )
+collision_layer = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="coll_ray" type="RayCast2D" parent="area_agro"]
+modulate = Color( 0.180392, 0.956863, 0.0196078, 1 )
+enabled = true
+collision_mask = 11
+collide_with_areas = true
+
+[node name="coll_ray1" type="RayCast2D" parent="area_agro"]
+modulate = Color( 0.262745, 0.843137, 0.054902, 1 )
+rotation = 0.174533
+collision_mask = 11
+collide_with_areas = true
+
+[node name="coll_ray2" type="RayCast2D" parent="area_agro"]
+modulate = Color( 0.262745, 0.843137, 0.054902, 1 )
+rotation = -0.174533
+collision_mask = 11
+collide_with_areas = true
+
+[node name="coll_agro" type="CollisionShape2D" parent="area_agro"]
+position = Vector2( -0.0872116, 0.169239 )
+shape = SubResource( 3 )
+
+[node name="spr_chobi" type="AnimatedSprite" parent="."]
+position = Vector2( -1.64618, 40.1446 )
+scale = Vector2( 8, 8 )
+frames = ExtResource( 1 )
+animation = "dead"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.145
+one_shot = true
+
+[node name="anim_chobi" type="AnimationPlayer" parent="."]
+anims/murido = ExtResource( 3 )
+
+[connection signal="area_entered" from="coll_chobi/hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="area_agro" to="." method="_on_area_agro_area_entered"]
+[connection signal="area_exited" from="area_agro" to="." method="_on_area_agro_area_exited"]
+[connection signal="body_entered" from="area_agro" to="." method="_on_area_agro_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

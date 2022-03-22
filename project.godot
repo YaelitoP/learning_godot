@@ -9,26 +9,61 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Idle_Bat",
+"language": "GDScript",
+"path": "res://scripts/IDLE_bat.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://scripts/StateMachine.gd"
+}, {
+"base": "Node",
+"class": "Wander_Bat",
+"language": "GDScript",
+"path": "res://scripts/WANDER_bat.gd"
+}, {
 "base": "Area2D",
 "class": "area_plataforma",
 "language": "GDScript",
-"path": "res://area_plataforma.gd"
+"path": "res://scripts/area_plataforma.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "bat",
+"language": "GDScript",
+"path": "res://scripts/bat.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "murcielago",
+"language": "GDScript",
+"path": "res://scripts/murcielago.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "plataforma",
 "language": "GDScript",
-"path": "res://plataformita.gd"
+"path": "res://scripts/plataformita.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "player1",
+"language": "GDScript",
+"path": "res://scripts/Pj1.tres.gd"
 } ]
 _global_script_class_icons={
+"Idle_Bat": "",
+"StateMachine": "",
+"Wander_Bat": "",
 "area_plataforma": "",
-"plataforma": ""
+"bat": "",
+"murcielago": "",
+"plataforma": "",
+"player1": ""
 }
 
 [application]
 
 config/name="test2"
-run/main_scene="res://TestMap.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenas/TestMap.tscn"
 
 [importer_defaults]
 
@@ -119,4 +154,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.192157, 0.192157, 0.192157, 1 )
 environment/default_environment="res://default_env.tres"

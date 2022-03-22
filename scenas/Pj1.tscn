@@ -1,0 +1,437 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/animations/gladiador.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/Pj1.tres.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 16.4853
+height = 43.5481
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 20.0579
+height = 41.9387
+
+[sub_resource type="Animation" id=3]
+resource_name = "atack0"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("area_sword/coll_atack0:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "atack0" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("spr_player:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1.1487, 1, 0.757858, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("area_sword/coll_atack0:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "atack1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_player:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "atack1" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("area_sword/coll_atack1:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("area_sword/coll_atack1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "atack2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_player:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "atack2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("area_sword/coll_atack2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("area_sword/coll_atack2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("coll_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -7.67828, -10.3732 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("coll_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4.888, -10.373 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("spr_player:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("area_sword:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 38.848, -24.89 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("area_sword:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("area_sword:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("coll_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -13.996, -10.373 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("spr_player:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("area_sword:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -46.8477, -24.8903 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("area_sword:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("area_sword:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_mask = 126
+script = ExtResource( 2 )
+
+[node name="spr_player" type="AnimatedSprite" parent="."]
+position = Vector2( -8.26688, -19.0019 )
+scale = Vector2( 2.34114, 2.6242 )
+z_index = 1
+frames = ExtResource( 1 )
+animation = "idle"
+frame = 1
+playing = true
+
+[node name="coll_player" type="CollisionShape2D" parent="." groups=[
+"player",
+]]
+position = Vector2( -7.67828, -10.3732 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="area_coll" type="Area2D" parent="coll_player" groups=[
+"player",
+]]
+collision_mask = 30
+
+[node name="coll_area" type="CollisionShape2D" parent="coll_player/area_coll" groups=[
+"player",
+]]
+position = Vector2( 0.220749, -0.483814 )
+shape = SubResource( 2 )
+
+[node name="ray" type="RayCast2D" parent="coll_player"]
+modulate = Color( 0, 0.94902, 0.12549, 1 )
+show_behind_parent = true
+position = Vector2( 0.400917, 7.08292 )
+scale = Vector2( 5.08808, 0.729803 )
+enabled = true
+collision_mask = 994
+collide_with_areas = true
+
+[node name="area_sword" type="Area2D" parent="." groups=[
+"ataques",
+]]
+position = Vector2( 38.848, -24.89 )
+collision_mask = 8
+
+[node name="coll_atack0" type="CollisionPolygon2D" parent="area_sword" groups=[
+"ataques",
+]]
+visible = false
+position = Vector2( -0.516586, 0.265785 )
+polygon = PoolVector2Array( -30.4714, -40.5258, -8.67664, -38.9311, 8.99838, -20.9902, 13.9687, -3.02282, 8.86548, 21.8019, -8.14507, 38.4138, -24.0924, 41.4703, -32.9964, 38.8124, -26.6971, 33.7891, -14.3379, 18.7719, -11.8129, 3.35614, -14.0721, -11.1294, -19.7069, -19.5284, -28.3451, -27.3692, -45.4885, -33.2166 )
+disabled = true
+
+[node name="coll_atack1" type="CollisionPolygon2D" parent="area_sword" groups=[
+"ataques",
+]]
+visible = false
+position = Vector2( -45.3021, 24.272 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( -28.9558, -45.7137, -37.2421, -42.779, -50.8799, -27.4149, -54.1598, -9.97925, -51.0525, 5.21222, -36.2063, 21.9574, -23.7769, 27.4815, -2.54337, 27.8268, 14.0291, 24.8921, 28.7027, 21.9574, 19.0354, 9.52798, 6.95129, 11.5995, -9.96648, 11.7722, -24.1222, 11.0816, -32.0632, -1.1751, -36.2063, -12.2234, -34.48, -26.897, -29.819, -36.2191, -14.6275, -46.5769 )
+disabled = true
+
+[node name="coll_atack2" type="CollisionPolygon2D" parent="area_sword" groups=[
+"ataques",
+]]
+visible = false
+polygon = PoolVector2Array( -53.3238, -7.07883, -37.0965, -2.24518, -21.7324, 1.0348, -13.1009, 4.31477, 3.64424, 11.9105, 15.901, 18.2978, 15.2105, 28.483, 7.44211, 36.2514, -4.64201, 40.9124, -22.7682, 46.9545, -49.5259, 47.8176, -72.4857, 47.2997, -79.0457, 41.7756, -91.3024, 38.8408, -96.654, 36.5966, -93.374, 32.2809, -81.6351, 27.7925, -74.0394, 28.8283, -64.89, 34.8703, -52.6332, 36.5966, -28.9829, 37.6324, -23.4587, 36.2514, -15.6904, 30.0367, -4.64201, 26.5841, -1.87993, 17.4347, -9.1304, 12.2558, -14.1367, 9.32105, -22.9408, 7.94001, -30.7092, 1.89795, -39.686, -0.000984192, -46.4185, -2.07255 )
+disabled = true
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/atack0 = SubResource( 3 )
+anims/atack1 = SubResource( 4 )
+anims/atack2 = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/run = SubResource( 7 )
+anims/runL = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="animation_finished" from="anim_player" to="." method="_on_anim_player_animation_finished"]
+[connection signal="animation_started" from="anim_player" to="." method="_on_anim_player_animation_started"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
